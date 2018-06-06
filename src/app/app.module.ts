@@ -48,6 +48,9 @@ import { HomePageComponent } from './page/home-page.component';
 import { HomeViewComponent } from './view/home-view.component';
 import { DebugPageComponent } from './page/debug-page.component';
 import { DebugScreenPageComponent } from './page/debug-screen-page.component';
+import { DebugScreenViewComponent } from './view/debug-screen-view.component';
+import { ScrollPageComponent } from './page/scroll-page.component';
+import { ScrollViewComponent } from './view/scroll-view.component';
 import { DateListPageComponent } from './page/date-list-page.component';
 import { DateListViewComponent } from './view/date-list-view.component';
 import { DatePageComponent } from './page/date-page.component';
@@ -101,6 +104,9 @@ import { NumberpadPipe } from './pipes/numberpad.pipe';
     HomeViewComponent,
     DebugPageComponent,
     DebugScreenPageComponent,
+    DebugScreenViewComponent,
+    ScrollPageComponent,
+    ScrollViewComponent,
     DateListPageComponent,
     DateListViewComponent,
     DatePageComponent,

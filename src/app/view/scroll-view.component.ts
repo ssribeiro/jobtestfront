@@ -12,7 +12,7 @@ import { Screen, InitialScreen } from '../models/screen';
   styles: [`
   .scroolarea {
     position: absolute;
-    top: 56px;
+    top: 0px;
     bottom: 0;
     left: 0;
     right: 0;
