@@ -1,5 +1,5 @@
 # jobtestfront
 job test frontend
 
-´´´ nvm use ´´´
-´´´ npm start ´´´
+``` nvm use ```
+``` npm start ```
