@@ -17,7 +17,7 @@ import { Screen, InitialScreen } from '../models/screen';
     left: 0;
     right: 0;
   }
-  .wide { top: 65px !important; }
+  .wide { }
   `]
 })
 export class ScrollViewComponent {
