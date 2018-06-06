@@ -47,6 +47,21 @@ export const SampleDayList:Day[] = [
   }
 ];
 
+export const DayMethods = {
+  getName:(_:Day):string => {
+    switch(_.orderFromToday) {
+       case 0: { return 'today'; }
+       case -1: { return 'yesterday'; }
+       case 1: { return 'tomorrow'; }
+       default: { return _.weekday; }
+    }
+  },
+  getWeekShort:(_:Day):string => {
+    return _.weekday.substring(0,3);
+  },
+};
+
+/* auxiliar methods */
 export const generateDays = (dayMilseconds:number):Day[] => {
   //to do: generate days from today
   return SampleDayList;

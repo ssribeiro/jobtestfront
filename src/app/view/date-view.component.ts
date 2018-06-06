@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Day, SampleDay } from '../models/day';
+import { Day, SampleDay, DayMethods } from '../models/day';
 
 @Component({
   selector: 'app-date-view',
@@ -9,9 +9,15 @@ import { Day, SampleDay } from '../models/day';
       <div class="dayinfo bold">
         <table>
           <tr>
-            <td class="day-month"></td>
-            <td class="day-name"></td>
-            <td class="day-bar"></td>
+            <td class="day-number-week">
+              <span class="week-short">{{ dayMethods.getWeekShort(day).toUpperCase() }}</span>
+              <br>
+              <span class="number">{{ day.day }}</span>
+            </td>
+            <td class="day-name">{{ dayMethods.getName(day).toUpperCase() }}</td>
+            <td class="day-bar">
+              here we will get a bar
+            </td>
           </tr>
         </table>
       </div>
@@ -42,31 +48,22 @@ import { Day, SampleDay } from '../models/day';
     top: 50%;
     transform: translateY(-50%);
   }
+  .day-number-week {
+
+  }
+  .day-name {
+
+  }
+  .day-bar {
+
+  }
   `]
 })
 export class DateViewComponent {
   @Input() day:Day = SampleDay;
   @Output() dayClick = new EventEmitter<Day>();
+
+  dayMethods = DayMethods;
   constructor() { }
   //putAns(a:Ans) { this.ans.emit(a); }
-  textInfo():string {
-    switch(this.day.orderFromToday) {
-       case 0: {
-          return 'today';
-          break;
-       }
-       case -1: {
-          return 'yesterday';
-          break;
-       }
-       case 1: {
-          return 'tomorrow';
-          break;
-       }
-       default: {
-          return this.day.weekday;
-          break;
-       }
-    }
-  }
 }

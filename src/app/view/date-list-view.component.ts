@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import { Day, InitialDay, SampleDayList, generateDays } from '../models/day';
+import { Day, SampleDayList, generateDays } from '../models/day';
 
 @Component({
   selector: 'app-date-list-view',
