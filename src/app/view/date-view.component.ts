@@ -12,11 +12,11 @@ import { Day, SampleDay, DayMethods } from '../models/day';
             <td class="day-number-week">
               <span class="week-short">{{ dayMethods.getWeekShort(day).toUpperCase() }}</span>
               <br>
-              <span class="number">{{ day.day }}</span>
+              <span class="day-number">{{ day.day | numberpad }}</span>
             </td>
             <td class="day-name">{{ dayMethods.getName(day).toUpperCase() }}</td>
             <td class="day-bar">
-              here we will get a bar
+              <div class="bar" [style.left]=" '' + (100 - day.amountOfAThing) + '%' "></div>
             </td>
           </tr>
         </table>
@@ -24,6 +24,7 @@ import { Day, SampleDay, DayMethods } from '../models/day';
     </div>
   `,
   styles: [`
+  table { width: 100%; }
   .daybox {
     text-align: center;
     position: relative;
@@ -33,14 +34,8 @@ import { Day, SampleDay, DayMethods } from '../models/day';
     color: #bcb9b6;
     height: 100%;
   }
-  .today {
-    color: white;
-    background-color: #293b62;
-  }
-  .after-today {
-    color: #fffae8;
-    background-color: #70bcc4;
-  }
+  .today { color: white; background-color: #293b62; }
+  .after-today { color: #fffae8; background-color: #70bcc4; }
   .dayinfo {
     text-align: center;
     position: absolute;
@@ -48,15 +43,21 @@ import { Day, SampleDay, DayMethods } from '../models/day';
     top: 50%;
     transform: translateY(-50%);
   }
-  .day-number-week {
-
-  }
-  .day-name {
-
-  }
-  .day-bar {
-
-  }
+  .day-number-week { width: 22%; }
+  .week-short { font-size: 8px; }
+  .day-number { font-size: 19px; }
+  .day-name { text-align: left; padding-left: 12%; font-size: 18px; }
+  .day-bar { width: 25%; transform: translate(2px); transition: 0.35s;}
+  .bar {
+    width: auto;
+    height: 16px;
+    background-color: white;
+    right: 0;
+    position: absolute;
+    top: 28%;
+    opacity: 0.6;
+    left: 100%;
+   }
   `]
 })
 export class DateViewComponent {

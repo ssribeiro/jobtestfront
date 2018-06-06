@@ -41,7 +41,7 @@ Pages And Views
 import { environment } from '../environments/environment';
 
 /*
-App Components Views and Components Pages
+App Components Views, Components Pages and Pipes
 */
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './page/home-page.component';
@@ -52,6 +52,7 @@ import { DateListPageComponent } from './page/date-list-page.component';
 import { DateListViewComponent } from './view/date-list-view.component';
 import { DatePageComponent } from './page/date-page.component';
 import { DateViewComponent } from './view/date-view.component';
+import { NumberpadPipe } from './pipes/numberpad.pipe';
 
 @NgModule({
   imports: [
@@ -93,7 +94,7 @@ import { DateViewComponent } from './view/date-view.component';
   ],
   declarations: [
     /*
-    App Components Views and Components Pages Declaration
+    App Components Views, Components Pages, and Pipes Declaration
     */
     AppComponent,
     HomePageComponent,
@@ -104,6 +105,7 @@ import { DateViewComponent } from './view/date-view.component';
     DateListViewComponent,
     DatePageComponent,
     DateViewComponent,
+    NumberpadPipe,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
