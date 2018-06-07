@@ -19,6 +19,7 @@ the reducers font
 */
 import * as fromLayout from './layout';
 import * as fromScreen from './screen';
+import * as fromServerStatus from './server-status';
 
 /*
 states
@@ -26,6 +27,7 @@ states
 export interface State {
   layout: fromLayout.State;
   screen: fromScreen.State;
+  serverStatus: fromServerStatus.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
@@ -35,6 +37,7 @@ Reducers
 export const reducers: ActionReducerMap<State> = {
   layout: fromLayout.reducer,
   screen: fromScreen.reducer,
+  serverStatus: fromServerStatus.reducer,
   router: fromRouter.routerReducer,
 };
 
@@ -61,3 +64,6 @@ export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowS
 
 export const getScreenState = createFeatureSelector<fromScreen.State>('screen');
 export const getScreen = createSelector(getScreenState, fromScreen.getScreen);
+
+export const getServerStatusState = createFeatureSelector<fromServerStatus.State>('serverStatus');
+export const getServerStatus = createSelector(getServerStatusState, fromServerStatus.getServerStatus);

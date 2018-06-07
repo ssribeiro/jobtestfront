@@ -33,6 +33,8 @@ Effects
 Services
 */
 import { ScreenService } from './services/screen.service';
+import { WebService } from './services/web.service';
+import { TestServerService } from './services/test-server.service';
 
 /*
 Pages And Views
@@ -56,6 +58,8 @@ import { DateListViewComponent } from './view/date-list-view.component';
 import { DatePageComponent } from './page/date-page.component';
 import { DateViewComponent } from './view/date-view.component';
 import { NumberpadPipe } from './pipes/numberpad.pipe';
+import { StatusPageComponent } from './page/status-page.component';
+import { StatusViewComponent } from './view/status-view.component';
 
 @NgModule({
   imports: [
@@ -94,6 +98,8 @@ import { NumberpadPipe } from './pipes/numberpad.pipe';
     Services Declaration
     */
     ScreenService,
+    WebService,
+    TestServerService,
   ],
   declarations: [
     /*
@@ -112,6 +118,8 @@ import { NumberpadPipe } from './pipes/numberpad.pipe';
     DatePageComponent,
     DateViewComponent,
     NumberpadPipe,
+    StatusPageComponent,
+    StatusViewComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]

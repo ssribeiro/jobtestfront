@@ -6,6 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <app-scroll-page>
       <app-date-list-page></app-date-list-page>
     </app-scroll-page>
+    <app-status-page></app-status-page>
   `,
   styles: [`
   `]
