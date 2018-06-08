@@ -62,6 +62,8 @@ import { DateViewComponent } from './view/date-view.component';
 import { NumberpadPipe } from './pipes/numberpad.pipe';
 import { StatusPageComponent } from './page/status-page.component';
 import { StatusViewComponent } from './view/status-view.component';
+import { DateDetailsPageComponent } from './page/date-details-page.component';
+import { DateDetailsViewComponent } from './view/date-details-view.component';
 
 @NgModule({
   imports: [
@@ -124,6 +126,8 @@ import { StatusViewComponent } from './view/status-view.component';
     NumberpadPipe,
     StatusPageComponent,
     StatusViewComponent,
+    DateDetailsPageComponent,
+    DateDetailsViewComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]

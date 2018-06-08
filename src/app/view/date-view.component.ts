@@ -6,21 +6,18 @@ import { Day, SampleDay, DayMethods } from '../models/day';
   selector: 'app-date-view',
   template: `
     <div class="daybox" (click)="dayClick.emit(day)" [ngClass]="{'today': day.orderFromToday==0, 'after-today': day.orderFromToday>0, 'day-hidden': selected!=null && !selected}">
-      <div class="dayinfo bold">
-        <table>
-          <tr>
-            <td class="day-number-week">
-              <span class="week-short">{{ dayMethods.getWeekShort(day).toUpperCase() }}</span>
-              <br>
-              <span class="day-number">{{ day.day | numberpad }}</span>
-            </td>
-            <td class="day-name">{{ dayMethods.getName(day).toUpperCase() }}</td>
-            <td class="day-bar">
-              <div class="bar" [style.left]=" '' + (100 - (day.relativeHumidity ? day.relativeHumidity.ny : 0)) + '%' "></div>
-            </td>
-          </tr>
-        </table>
-      </div>
+      <app-date-details-page>
+        <div class="dayinfo bold"><table><tr>
+          <td class="day-number-week">
+            <span class="week-short">{{ dayMethods.getWeekShort(day).toUpperCase() }}</span><br>
+            <span class="day-number">{{ day.day | numberpad }}</span>
+          </td>
+          <td class="day-name">{{ dayMethods.getName(day).toUpperCase() }}</td>
+          <td class="day-bar">
+            <div class="bar" [style.left]=" '' + (100 - (day.relativeHumidity ? day.relativeHumidity.ny : 0)) + '%' "></div>
+          </td>
+        <tr></table></div>
+      </app-date-details-page>
     </div>
   `,
   styles: [`

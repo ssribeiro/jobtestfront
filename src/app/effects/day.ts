@@ -16,10 +16,12 @@ import { DaysService } from '../services/days.service';
 import {
   DaysActionTypes,
   Update,
-  SetDays
+  SetDays,
+  SelectDay,
+  SetDayDetails,
   //UpdateError,
 } from '../actions/days';
-import { Day } from '../models/day';
+import { Day, DayDetails } from '../models/day';
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your
@@ -50,6 +52,29 @@ export class DayEffects {
         .pipe(
           takeUntil(nextUpdate$),
           map((days: Day[]) => new SetDays(days)),
+          catchError(err => empty())
+          //catchError(err => of(new SearchError(err)))
+        );
+    })
+  );
+
+  @Effect()
+  selectDay$: Observable<Action> = this.actions$.pipe(
+    ofType<SelectDay>(DaysActionTypes.SelectDay),
+    debounceTime(300, asyncScheduler),
+    map(action => action.payload),
+    switchMap(day => {
+
+      const next$ = this.actions$.pipe(
+        ofType(DaysActionTypes.SelectDay),
+        skip(1)
+      );
+
+      return this.daysService
+        .get(day) // the day we need
+        .pipe(
+          takeUntil(next$),
+          map((dayDetails: DayDetails) => new SetDayDetails(dayDetails)),
           catchError(err => empty())
           //catchError(err => of(new SearchError(err)))
         );

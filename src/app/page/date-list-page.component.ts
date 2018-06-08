@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as reducers from '../reducers';
 import { Store, select } from '@ngrx/store';
@@ -17,32 +17,24 @@ import { Day } from '../models/day';
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DateListPageComponent implements OnInit, OnDestroy {
+export class DateListPageComponent implements OnInit {
 
   days$: Observable<Day[]> = this.store.pipe(select(reducers.getDays));
   daySelected$: Observable<Day> = this.store.pipe(select(reducers.getSelectedDay));
   days:Day[] = null;
-  taskUpdateDays;
 
   constructor(private store:Store<reducers.State>) { }
 
   ngOnInit() {
-    this.days$.subscribe(days => this.days = days);
-    this.keepDaysUpdated();
-  }
-
-  keepDaysUpdated() {
     this.updateDays();
-    this.taskUpdateDays = setInterval(this.updateDays.bind(this), 10*1000);
+    this.days$.subscribe(days => {
+      this.days = days
+      if(!this.days) setTimeout(this.updateDays.bind(this), 10*1000);
+      else if(this.days.length!=5) setTimeout(this.updateDays.bind(this), 10*1000); // retry ater 10 seconds
+    );
+    setInterval(this.updateDays.bind(this), 1*60*60*1000); // updates in an hour
   }
 
-  updateDays() {
-    this.store.dispatch(new DaysActions.Update());
-  }
+  updateDays() { this.store.dispatch(new DaysActions.Update()); }
 
-  ngOnDestroy() {
-    if(this.taskUpdateDays)
-      this.taskUpdateDays.unsubscribe();
-    this.taskUpdateDays = null;
-  }
 }
