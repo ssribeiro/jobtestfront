@@ -66,6 +66,11 @@ export const SampleDayList:Day[] = [
   }
 ];
 
+export interface DayDetails {
+  day: number;
+  weather: any;
+};
+
 export const DayMethods = {
   getName:(_:Day):string => {
     switch(_.orderFromToday) {

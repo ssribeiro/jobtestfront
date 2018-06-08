@@ -5,7 +5,7 @@ import { Day, SampleDay, DayMethods } from '../models/day';
 @Component({
   selector: 'app-date-view',
   template: `
-    <div class="daybox" (click)="dayClick.emit(day)" [ngClass]="{'today': day.orderFromToday==0, 'after-today': day.orderFromToday>0}">
+    <div class="daybox" (click)="dayClick.emit(day)" [ngClass]="{'today': day.orderFromToday==0, 'after-today': day.orderFromToday>0, 'day-hidden': selected!=null && !selected}">
       <div class="dayinfo bold">
         <table>
           <tr>
@@ -32,7 +32,10 @@ import { Day, SampleDay, DayMethods } from '../models/day';
     padding: 0;
     background: #767a83;
     color: #bcb9b6;
+    z-index: 3;
+    opacity: 1;
     height: 100%;
+    transition: 0.35s;
   }
   .today { color: white; background-color: #293b62; }
   .after-today { color: #fffae8; background-color: #70bcc4; }
@@ -58,9 +61,13 @@ import { Day, SampleDay, DayMethods } from '../models/day';
     opacity: 0.6;
     left: 100%;
    }
+   .day-hidden {
+     opacity: 0 !important;
+   }
   `]
 })
 export class DateViewComponent {
+  @Input() selected:boolean = null;
   @Input() day:Day = SampleDay;
   @Output() dayClick = new EventEmitter<Day>();
 

@@ -11,6 +11,7 @@ import { Day } from '../models/day';
   template: `
     <app-date-list-view
       [days]="days$ | async"
+      [daySelected]="daySelected$ | async"
     ></app-date-list-view>
   `,
   styles: [],
@@ -19,6 +20,7 @@ import { Day } from '../models/day';
 export class DateListPageComponent implements OnInit, OnDestroy {
 
   days$: Observable<Day[]> = this.store.pipe(select(reducers.getDays));
+  daySelected$: Observable<Day> = this.store.pipe(select(reducers.getSelectedDay));
   days:Day[] = null;
   taskUpdateDays;
 

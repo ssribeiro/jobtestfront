@@ -2,7 +2,8 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import * as reducers from '../reducers';
 import { Store, select } from '@ngrx/store';
-//import * as ThingActions from '../actions/thing.actions';
+
+import * as DaysActions from '../actions/days';
 
 import { Day, SampleDay } from '../models/day';
 
@@ -11,6 +12,8 @@ import { Day, SampleDay } from '../models/day';
   template: `
     <app-date-view
       [day]=day
+      (dayClick)="onDayClick($event)"
+      [selected]="selected"
     ></app-date-view>
   `,
   styles: [],
@@ -18,7 +21,8 @@ import { Day, SampleDay } from '../models/day';
 })
 export class DatePageComponent {
   //stuff$: Observable<Stuff> = this.store.pipe(select(reducers.getStuff));
+  @Input() selected:boolean = false;
   @Input() day:Day = SampleDay;
   constructor(private store:Store<reducers.State>) { }
-  //onGot($event: Thing) { this.store.dispatch(new ThingActions.Action($event)); }
+  onDayClick(day:Day) { this.store.dispatch(new DaysActions.SelectDay(day)); }
 }
