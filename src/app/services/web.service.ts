@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import * as reducers from '../reducers';
 import { Store, select } from '@ngrx/store';
 
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class WebService implements OnDestroy {
 
@@ -60,9 +62,9 @@ export class WebService implements OnDestroy {
     return headers;
   }
 
-	get(address:string) { return this.http.get(address, this.ops()); }
-	post(address:string, obj:any={}) { return this.http.post(address, obj, this.ops()); }
-	put(address:string, obj:any={}) { return this.http.put(address, obj, this.ops()); }
-	delete(address:string) { return this.http.get(address, this.ops()); }
+	get(address:string) { return this.http.get(environment.api+address, this.ops()); }
+	post(address:string, obj:any={}) { return this.http.post(environment.api+address, obj, this.ops()); }
+	put(address:string, obj:any={}) { return this.http.put(environment.api+address, obj, this.ops()); }
+	delete(address:string) { return this.http.get(environment.api+address, this.ops()); }
 
 }

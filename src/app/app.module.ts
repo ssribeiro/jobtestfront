@@ -28,6 +28,7 @@ import { routes } from './routes';
 /*
 Effects
 */
+import { DayEffects } from './effects/day';
 
 /*
 Services
@@ -35,6 +36,7 @@ Services
 import { ScreenService } from './services/screen.service';
 import { WebService } from './services/web.service';
 import { TestServerService } from './services/test-server.service';
+import { DaysService } from './services/days.service';
 
 /*
 Pages And Views
@@ -82,6 +84,7 @@ import { StatusViewComponent } from './view/status-view.component';
       /*
       Effects Declaration
       */
+      DayEffects,
     ]),
     /*
     Packed
@@ -100,6 +103,7 @@ import { StatusViewComponent } from './view/status-view.component';
     ScreenService,
     WebService,
     TestServerService,
+    DaysService,
   ],
   declarations: [
     /*

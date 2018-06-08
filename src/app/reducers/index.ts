@@ -20,6 +20,7 @@ the reducers font
 import * as fromLayout from './layout';
 import * as fromScreen from './screen';
 import * as fromServerStatus from './server-status';
+import * as fromDays from './days';
 
 /*
 states
@@ -28,6 +29,7 @@ export interface State {
   layout: fromLayout.State;
   screen: fromScreen.State;
   serverStatus: fromServerStatus.State;
+  days: fromDays.State;
   router: fromRouter.RouterReducerState<RouterStateUrl>;
 }
 
@@ -38,6 +40,7 @@ export const reducers: ActionReducerMap<State> = {
   layout: fromLayout.reducer,
   screen: fromScreen.reducer,
   serverStatus: fromServerStatus.reducer,
+  days: fromDays.reducer,
   router: fromRouter.routerReducer,
 };
 
@@ -67,3 +70,6 @@ export const getScreen = createSelector(getScreenState, fromScreen.getScreen);
 
 export const getServerStatusState = createFeatureSelector<fromServerStatus.State>('serverStatus');
 export const getServerStatus = createSelector(getServerStatusState, fromServerStatus.getServerStatus);
+
+export const getDaysState = createFeatureSelector<fromDays.State>('days');
+export const getDays = createSelector(getDaysState, fromDays.getDays);

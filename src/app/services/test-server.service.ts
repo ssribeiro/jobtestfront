@@ -29,7 +29,7 @@ export class TestServerService {
   }
 
   updateServerStatus() {
-    this.web.get(environment.api+'/ping').subscribe(
+    this.web.get('/ping').subscribe(
       status => {
         if(status['message']=='pong') this.statusIs();
         else this.statusIs(errors.web.missconfig);

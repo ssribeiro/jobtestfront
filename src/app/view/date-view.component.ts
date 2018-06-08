@@ -16,7 +16,7 @@ import { Day, SampleDay, DayMethods } from '../models/day';
             </td>
             <td class="day-name">{{ dayMethods.getName(day).toUpperCase() }}</td>
             <td class="day-bar">
-              <div class="bar" [style.left]=" '' + (100 - day.amountOfAThing) + '%' "></div>
+              <div class="bar" [style.left]=" '' + (100 - (day.relativeHumidity || 0)) + '%' "></div>
             </td>
           </tr>
         </table>
