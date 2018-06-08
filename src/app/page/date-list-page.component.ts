@@ -27,11 +27,11 @@ export class DateListPageComponent implements OnInit {
 
   ngOnInit() {
     this.updateDays();
-    this.days$.subscribe(days => {
-      this.days = days
+    this.days$.subscribe( days => {
+      this.days = days;
       if(!this.days) setTimeout(this.updateDays.bind(this), 10*1000);
       else if(this.days.length!=5) setTimeout(this.updateDays.bind(this), 10*1000); // retry ater 10 seconds
-    );
+    });
     setInterval(this.updateDays.bind(this), 1*60*60*1000); // updates in an hour
   }
 

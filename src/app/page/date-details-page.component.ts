@@ -43,9 +43,9 @@ export class DateDetailsPageComponent implements OnInit {
       sea_level: null,
     };
     if(weather) {
-      parsed.temp = weather.main_information.temp ? parseFloat(+weather.main_information.temp-273).toFixed(2) : '--';
-      parsed.pressure = parseFloat(weather.main_information.pressure).toFixed(2) || '--';
-      parsed.sea_level = parseFloat(weather.main_information.sea_level).toFixed(2) || '--';
+      parsed.temp = weather.main_information.temp ? Number(weather.main_information.temp-273).toFixed(2) : null;
+      parsed.pressure = parseFloat(weather.main_information.pressure).toFixed(2) || null;
+      parsed.sea_level = parseFloat(weather.main_information.sea_level).toFixed(2) || null;
     } else {
       parsed = null;
     }
