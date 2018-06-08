@@ -3,7 +3,7 @@ export interface Day {
   month: string;
   weekday: string;
   orderFromToday: number; // 0 for today, -1 for yesterday, +2 for the day next to tomorrow and so on...
-  relativeHumidity: number; // Amount of any Stuff
+  relativeHumidity: any; // Amount of any Stuff
 };
 
 export const SampleDay:Day = {
@@ -11,7 +11,9 @@ export const SampleDay:Day = {
   month: 'july',
   weekday: 'friday',
   orderFromToday: 0,
-  relativeHumidity: 27,
+  relativeHumidity: {
+    ny: 37,
+  },
 };
 
 // Monday, Tuesday, Wednesday, Thursday, Friday, Saturday e Sunday
@@ -22,35 +24,45 @@ export const SampleDayList:Day[] = [
     month: 'july',
     weekday: 'wednesday',
     orderFromToday: -2,
-    relativeHumidity: 21,
+    relativeHumidity: {
+      ny: 21,
+    },
   },
   {
     day: 5,
     month: 'july',
     weekday: 'thursday',
     orderFromToday: -1,
-    relativeHumidity: 91,
+    relativeHumidity: {
+      ny: 91,
+    },
   },
   {
     day: 6,
     month: 'july',
     weekday: 'friday',
     orderFromToday: 0,
-    relativeHumidity: 100,
+    relativeHumidity: {
+      ny: 100,
+    },
   },
   {
     day: 7,
     month: 'july',
     weekday: 'saturday',
     orderFromToday: 1,
-    relativeHumidity: 48,
+    relativeHumidity: {
+      ny: 48,
+    },
   },
   {
     day: 8,
     month: 'july',
     weekday: 'sunday',
     orderFromToday: 2,
-    relativeHumidity: 6,
+    relativeHumidity: {
+      ny: 6,
+    },
   }
 ];
 
