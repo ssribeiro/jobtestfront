@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Day, SampleDay, DayMethods } from '../models/day';
+import { Location, InitialLocation } from '../models/location';
 
 @Component({
   selector: 'app-date-view',
@@ -14,7 +15,7 @@ import { Day, SampleDay, DayMethods } from '../models/day';
           </td>
           <td class="day-name">{{ dayMethods.getName(day).toUpperCase() }}</td>
           <td class="day-bar">
-            <div class="bar" [style.left]=" '' + (100 - (day.relativeHumidity ? day.relativeHumidity.ny : 0)) + '%' "></div>
+            <div class="bar" [style.left]=" '' + (100 - (day.relativeHumidity ? day.relativeHumidity[location.city.id] : 0)) + '%' "></div>
           </td>
         <tr></table></div>
       </app-date-details-page>
@@ -67,6 +68,7 @@ export class DateViewComponent {
   @Input() selected:boolean = null;
   @Input() day:Day = SampleDay;
   @Output() dayClick = new EventEmitter<Day>();
+  @Input() location:Location = InitialLocation;
 
   dayMethods = DayMethods;
   constructor() { }

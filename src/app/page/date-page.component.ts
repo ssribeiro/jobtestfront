@@ -6,6 +6,7 @@ import { Store, select } from '@ngrx/store';
 import * as DaysActions from '../actions/days';
 
 import { Day, SampleDay } from '../models/day';
+import { Location, InitialLocation } from '../models/location';
 
 @Component({
   selector: 'app-date-page',
@@ -14,6 +15,7 @@ import { Day, SampleDay } from '../models/day';
       [day]=day
       (dayClick)="onDayClick($event)"
       [selected]="selected"
+      [location]="location"
     ></app-date-view>
   `,
   styles: [],
@@ -23,6 +25,7 @@ export class DatePageComponent {
   //stuff$: Observable<Stuff> = this.store.pipe(select(reducers.getStuff));
   @Input() selected:boolean = false;
   @Input() day:Day = SampleDay;
+  @Input() location:Location = InitialLocation;
   constructor(private store:Store<reducers.State>) { }
   onDayClick(day:Day) { this.store.dispatch(new DaysActions.SelectDay(day)); }
 }

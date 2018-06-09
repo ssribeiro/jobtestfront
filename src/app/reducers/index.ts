@@ -75,3 +75,4 @@ export const getDaysState = createFeatureSelector<fromDays.State>('days');
 export const getDays = createSelector(getDaysState, fromDays.getDays);
 export const getSelectedDay = createSelector(getDaysState, fromDays.getSelectedDay);
 export const getDayDetails = createSelector(getDaysState, fromDays.getDayDetails);
+export const getLocation = createSelector(getDaysState, fromDays.getLocation);

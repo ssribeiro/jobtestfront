@@ -1,11 +1,13 @@
 import { Action } from '@ngrx/store';
 import { Day, DayDetails } from '../models/day';
+import { Location } from '../models/location';
 
 export enum DaysActionTypes {
   Update = '[Days] Update',
   SetDays = '[Days] Set Days',
   SelectDay = '[Days] Select Day',
   SetDayDetails = '[Days] Set Day Details',
+  SetLocation = '[Days] Set Location',
 }
 
 export class Update implements Action {
@@ -27,8 +29,14 @@ export class SetDayDetails implements Action {
   constructor(public payload:DayDetails) {};
 }
 
+export class SetLocation implements Action {
+  readonly type = DaysActionTypes.SetLocation;
+  constructor(public payload:Location) {};
+}
+
 export type DaysActions =
   Update |
   SetDays |
   SelectDay |
-  SetDayDetails;
+  SetDayDetails |
+  SetLocation ;

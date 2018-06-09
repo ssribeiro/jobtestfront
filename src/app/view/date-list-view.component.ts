@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Day, SampleDayList, generateDays } from '../models/day';
+import { Location, InitialLocation } from '../models/location';
 
 @Component({
   selector: 'app-date-list-view',
@@ -11,8 +12,10 @@ import { Day, SampleDayList, generateDays } from '../models/day';
       [day]="day"
       [index]="day_index"
       [selected]="!!daySelected ? ( daySelected.day == day.day ) : null"
+      [location]="location"
     ></app-date-page>
   </div>
+  <app-select-location-page></app-select-location-page>
   `,
   styles: [`
     div {
@@ -23,6 +26,7 @@ import { Day, SampleDayList, generateDays } from '../models/day';
 export class DateListViewComponent {
   @Input() days:Day[] = generateDays(Date.now()) || SampleDayList;
   @Input() daySelected:Day = null;
+  @Input() location:Location = InitialLocation;
   //@Output() ans = new EventEmitter<Ans>();
   constructor() { }
   //putAns(a:Ans) { this.ans.emit(a); }

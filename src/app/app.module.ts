@@ -66,6 +66,8 @@ import { DateDetailsPageComponent } from './page/date-details-page.component';
 import { DateDetailsViewComponent } from './view/date-details-view.component';
 import { MultiplePageComponent } from './page/multiple-page.component';
 import { MultipleViewComponent } from './view/multiple-view.component';
+import { SelectLocationPageComponent } from './page/select-location-page.component';
+import { SelectLocationViewComponent } from './view/select-location-view.component';
 
 @NgModule({
   imports: [
@@ -132,6 +134,8 @@ import { MultipleViewComponent } from './view/multiple-view.component';
     DateDetailsViewComponent,
     MultiplePageComponent,
     MultipleViewComponent,
+    SelectLocationPageComponent,
+    SelectLocationViewComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]

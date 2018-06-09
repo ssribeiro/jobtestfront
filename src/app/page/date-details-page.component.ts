@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 //import * as ThingActions from '../actions/thing.actions';
 
 import { Day, DayDetails } from '../models/day';
+import { Location, InitialLocation } from '../models/location';
 
 @Component({
   selector: 'app-date-details-page',
@@ -24,12 +25,15 @@ export class DateDetailsPageComponent implements OnInit {
 
   dayDetails$: Observable<DayDetails> = this.store.pipe(select(reducers.getDayDetails));
   daySelected$: Observable<Day> = this.store.pipe(select(reducers.getSelectedDay));
+  location$: Observable<Location> = this.store.pipe(select(reducers.getLocation));
+  location: Location = InitialLocation;
 
   timelined$ = new EventEmitter<any>();
 
   constructor(private store:Store<reducers.State>) { }
 
   ngOnInit() {
+    this.location$.subscribe(location=>this.location = location);
     this.dayDetails$.subscribe(details=>{
       let timelined = this.bulkExtractWeather(details);
       this.timelined$.emit(timelined);
@@ -55,10 +59,10 @@ export class DateDetailsPageComponent implements OnInit {
   bulkExtractWeather(details:DayDetails) {
     if(!details) return null;
     if(!details.weather) return null;
-    if(!details.weather.ny) return null;
-    if(details.weather.ny.length==0) return null;
+    if(!details.weather[this.location.city.id]) return null;
+    if(details.weather[this.location.city.id].length==0) return null;
 
-    let timelined = this.getTimelined(details.weather.ny);
+    let timelined = this.getTimelined(details.weather[this.location.city.id]);
 
     timelined.past = this.parseWeather(timelined.past);
     timelined.central = this.parseWeather(timelined.central);

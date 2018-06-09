@@ -5,6 +5,7 @@ import { Store, select } from '@ngrx/store';
 
 import * as DaysActions from '../actions/days';
 import { Day } from '../models/day';
+import { Location } from '../models/location';
 
 @Component({
   selector: 'app-date-list-page',
@@ -12,6 +13,7 @@ import { Day } from '../models/day';
     <app-date-list-view
       [days]="days$ | async"
       [daySelected]="daySelected$ | async"
+      [location]="location$ | async"
     ></app-date-list-view>
   `,
   styles: [],
@@ -22,6 +24,7 @@ export class DateListPageComponent implements OnInit {
   days$: Observable<Day[]> = this.store.pipe(select(reducers.getDays));
   daySelected$: Observable<Day> = this.store.pipe(select(reducers.getSelectedDay));
   days:Day[] = null;
+  location$: Observable<Location> = this.store.pipe(select(reducers.getLocation));
 
   constructor(private store:Store<reducers.State>) { }
 
