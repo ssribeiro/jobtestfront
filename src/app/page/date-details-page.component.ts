@@ -26,6 +26,8 @@ export class DateDetailsPageComponent implements OnInit {
   dayDetails$: Observable<DayDetails> = this.store.pipe(select(reducers.getDayDetails));
   daySelected$: Observable<Day> = this.store.pipe(select(reducers.getSelectedDay));
   location$: Observable<Location> = this.store.pipe(select(reducers.getLocation));
+
+  dayDetails: DayDetails = null;
   location: Location = InitialLocation;
 
   timelined$ = new EventEmitter<any>();
@@ -33,10 +35,13 @@ export class DateDetailsPageComponent implements OnInit {
   constructor(private store:Store<reducers.State>) { }
 
   ngOnInit() {
-    this.location$.subscribe(location=>this.location = location);
+    this.location$.subscribe(location=> {
+      this.location = location;
+      this.bulkExtractWeather();
+    });
     this.dayDetails$.subscribe(details=>{
-      let timelined = this.bulkExtractWeather(details);
-      this.timelined$.emit(timelined);
+      this.dayDetails = details;
+      this.bulkExtractWeather();
     });
   }
 
@@ -56,7 +61,9 @@ export class DateDetailsPageComponent implements OnInit {
     return parsed;
   }
 
-  bulkExtractWeather(details:DayDetails) {
+  bulkExtractWeather() {
+    const details = this.dayDetails;
+
     if(!details) return null;
     if(!details.weather) return null;
     if(!details.weather[this.location.city.id]) return null;
@@ -67,7 +74,8 @@ export class DateDetailsPageComponent implements OnInit {
     timelined.past = this.parseWeather(timelined.past);
     timelined.central = this.parseWeather(timelined.central);
     timelined.future = this.parseWeather(timelined.future);
-    return timelined.central == null ? null : timelined;
+    timelined = timelined.central == null ? null : timelined;
+    this.timelined$.emit(timelined);
   }
 
   getTimelined(weather_details) {
