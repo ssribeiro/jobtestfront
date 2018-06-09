@@ -48,24 +48,24 @@ import { Day, DayDetails } from '../models/day';
     color: lightgray;
   }
   .just-weathers {
-    position: fixed;
+    position: absolute;
     top: 54%;
     width: 100%;
   }
   .top-weathers {
-    position: fixed;
+    position: absolute;
     top: 25%;
     width: 100%;
     z-index: 1;
   }
   .bottom-weathers {
-    position: fixed;
+    position: absolute;
     top: 73%;
     width: 100%;
     z-index: 1;
   }
   .header-weathers {
-    position: fixed;
+    position: absolute;
     top: 10%;
     width: 100%;
     z-index: 1;

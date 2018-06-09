@@ -4,11 +4,13 @@ import { Routes } from '@angular/router';
 import { HomePageComponent } from './page/home-page.component';
 import { DebugPageComponent } from './page/debug-page.component';
 import { DebugScreenPageComponent } from './page/debug-screen-page.component';
+import { MultiplePageComponent } from './page/multiple-page.component';
 //import { NotFoundPageComponent } from './core/containers/not-found-page';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
+  { path: 'multiple', component: MultiplePageComponent },
   { path: 'debug', component: DebugPageComponent,
   	children: [
       { path: 'screen', component: DebugScreenPageComponent },

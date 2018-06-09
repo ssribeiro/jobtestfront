@@ -64,6 +64,8 @@ import { StatusPageComponent } from './page/status-page.component';
 import { StatusViewComponent } from './view/status-view.component';
 import { DateDetailsPageComponent } from './page/date-details-page.component';
 import { DateDetailsViewComponent } from './view/date-details-view.component';
+import { MultiplePageComponent } from './page/multiple-page.component';
+import { MultipleViewComponent } from './view/multiple-view.component';
 
 @NgModule({
   imports: [
@@ -128,6 +130,8 @@ import { DateDetailsViewComponent } from './view/date-details-view.component';
     StatusViewComponent,
     DateDetailsPageComponent,
     DateDetailsViewComponent,
+    MultiplePageComponent,
+    MultipleViewComponent,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   bootstrap: [AppComponent]
